@@ -1,7 +1,6 @@
 {
   "name": "nyc-proxy",
   "version": "1.0.0",
-  "description": "Node.js proxy server for NYC IP",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -9,9 +8,7 @@
   "dependencies": {
     "express": "^4.18.2",
     "http-proxy-middleware": "^2.0.6",
-    "dotenv": "^16.0.3"
-  },
-  "engines": {
-    "node": ">=14.x"
+    "dotenv": "^16.0.3",
+    "express-basic-auth": "^1.2.1"
   }
 }
