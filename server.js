@@ -7,6 +7,11 @@ dotenv.config();
 
 const app = express();
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+  res.status(200).send('Proxy server is healthy, Kudos Wizartech a.k.a Richard Ngasike');
+});
+
 // Proxy configuration
 const proxyOptions = {
   target: process.env.TARGET_URL || 'https://www.google.com', // Default target
@@ -14,13 +19,8 @@ const proxyOptions = {
   logLevel: 'debug', // For debugging
 };
 
-// Create proxy middleware
+// Apply proxy middleware to all routes except /health
 app.use('/', createProxyMiddleware(proxyOptions));
-
-// Health check endpoint for Render
-app.get('/health', (req, res) => {
-  res.status(200).send('Proxy server is healthy, kudos wizaetech');
-});
 
 // Start server
 const PORT = process.env.PORT || 3000;
